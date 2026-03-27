@@ -7,6 +7,8 @@ with background removal.
 
 import base64
 import io
+import os
+import tempfile
 import uuid
 from collections import deque
 from pathlib import Path
@@ -29,7 +31,7 @@ except Exception:
     REMBG_SESSION = None
     REMBG_AVAILABLE = False
 
-TEMP_DIR = Path(__file__).parent / "temp"
+TEMP_DIR = Path(os.getenv("ESPORTIKO_TEMP_DIR", tempfile.gettempdir())) / "esportiko-isolator"
 TEMP_DIR.mkdir(exist_ok=True)
 
 # Minimum contour size to keep (filters noise)

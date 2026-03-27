@@ -8,13 +8,15 @@ Produces PNG files with:
 """
 
 import io
+import os
+import tempfile
 import zipfile
 from pathlib import Path
 from typing import List, Dict
 
 from PIL import Image, PngImagePlugin
 
-TEMP_DIR = Path(__file__).parent / "temp"
+TEMP_DIR = Path(os.getenv("ESPORTIKO_TEMP_DIR", tempfile.gettempdir())) / "esportiko-isolator"
 
 # Target DPI for print output
 TARGET_DPI = 300
